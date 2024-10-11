@@ -169,7 +169,8 @@ module AstExtensions =
             SynExpr.CreateApp(valueExprWithType, args)
         /// Creates: expr1; expr2; ... exprN
         static member CreateSequential exprs =
-            let seqExpr expr1 expr2 = SynExpr.Sequential(DebugPointAtSequential.SuppressBoth, false, expr1, expr2, range0)
+            let seqExpr expr1 expr2 = SynExpr.Sequential(
+                DebugPointAtSequential.SuppressBoth, false, expr1, expr2, range0, {SeparatorRange = None})
             let rec inner exprs state =
                 match state, exprs with
                 | None, [] -> SynExpr.CreateConst SynConst.Unit
@@ -395,10 +396,11 @@ module AstExtensions =
             SynValInfo([], SynArgInfo.Empty)
 
     type SynMemberDefn with
-        static member CreateImplicitCtor (ctorArgs : SynSimplePat list) =
-            SynMemberDefn.ImplicitCtor(None, SynAttributes.Empty, SynSimplePats.SimplePats(ctorArgs, dotsOrCommas ctorArgs, range0), None, PreXmlDoc.Empty, range0, SynMemberDefnImplicitCtorTrivia.Zero)
-        static member CreateImplicitCtor() =
-            SynMemberDefn.CreateImplicitCtor []
+        // static member CreateImplicitCtor (ctorArgs : SynSimplePat list) =
+            // SynMemberDefn.ImplicitCtor(None, SynAttributes.Empty, 
+            // SynSimplePats.SimplePats(ctorArgs, dotsOrCommas ctorArgs, range0), None, PreXmlDoc.Empty, range0, SynMemberDefnImplicitCtorTrivia.Zero)
+        // static member CreateImplicitCtor() =
+        //     SynMemberDefn.CreateImplicitCtor []
 
         static member CreateInterface(interfaceType, members) =
             SynMemberDefn.Interface(interfaceType, None, members, range0)
