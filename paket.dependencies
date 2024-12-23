@@ -1,6 +1,6 @@
 version 7.1.5
 source https://api.nuget.org/v3/index.json
-framework: net60, netstandard21, netcoreapp31
+framework: net8.0, netstandard21, netcoreapp31
 storage: none
 
 nuget Argu
@@ -8,6 +8,11 @@ nuget Fantomas.Core
 nuget FSharp.Compiler.Service
 nuget FSharp.Core strategy: min
 nuget Tomlyn
-nuget Expecto
 nuget Aether
 nuget McMaster.NETCore.Plugins
+group Test
+  source https://api.nuget.org/v3/index.json
+  framework: net6.0, netstandard21, netcoreapp31
+  storage: none
+  nuget Expecto
+  nuget Aether

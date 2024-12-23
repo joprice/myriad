@@ -5,10 +5,10 @@
         <GitHome>https://github.com/$(gitOwner)</GitHome>
         <GitUrl>$(gitHome)/$(gitName)</GitUrl>
         <NupkgsDir>$([System.IO.Path]::GetFullPath("$(MSBuildThisFileDirectory)/bin/nupkg"))</NupkgsDir>
-        <VersionPrefix Condition=" '$(VersionPrefix)' == '' ">0.8.4-joprice</VersionPrefix>
+        <VersionPrefix Condition=" '$(VersionPrefix)' == '' ">0.8.4-joprice-net8.0</VersionPrefix>
         <Version Condition=" '$(Version)' == '' ">$(VersionPrefix)$(VersionSuffix)</Version>
         <!-- pack stuff -->
-        <TargetFrameworks>net6.0;netstandard2.1</TargetFrameworks>
+        <TargetFrameworks>net8.0;netstandard2.1</TargetFrameworks>
         <Authors>7sharp9</Authors>
         <PackageProjectUrl>$(GitUrl)</PackageProjectUrl>
         <PackageTags>fsharp;codegen;generation;metaprogramming</PackageTags>
